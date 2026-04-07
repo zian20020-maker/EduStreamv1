@@ -1,213 +1,219 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const setupForm = document.getElementById('setupForm');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirmPassword');
-    const strengthBar = document.getElementById('strengthBar');
+<!DOCTYPE html>
 
-    // 1. Password Strength Logic
-    password.addEventListener('input', () => {
-        const val = password.value;
-        let width = 0;
-        let color = "#ef4444"; // Default Red
+<html lang="en">
 
-        // Check length and complexity
-        if (val.length > 0) {
-            if (val.length <= 5) {
-                width = 25;
-                color = "#ef4444"; // Weak - Red
-            } else if (val.length <= 8) {
-                width = 50;
-                color = "#f59e0b"; // Medium - Orange
-            } else if (val.length > 8 && /[A-Z]/.test(val) && /\d/.test(val)) {
-                width = 100;
-                color = "#10b981"; // Strong - Green
-            } else {
-                width = 75;
-                color = "#84cc16"; // Good - Light Green
-            }
-        } else {
-            width = 0;
-        }
+<head>
 
-        // Apply styles to the bar
-        strengthBar.style.width = width + "%";
-        strengthBar.style.backgroundColor = color;
-    });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduStream | Advanced Learning</title>
+    <link rel="icon" type="image/png" href="img/3dicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    // 2. Form Submission Logic
-    if (setupForm) {
-        setupForm.onsubmit = (e) => {
-            e.preventDefault();
+</head>
 
-            // Validation: Password Match
-            if (password.value !== confirmPassword.value) {
-                alert("Passwords do not match. Please check again.");
-                confirmPassword.style.borderColor = "#ef4444";
-                return;
-            }
-
-            // Save user data for the Landing Page "Member Mode"
-            const name = document.getElementById('fullName').value;
-            localStorage.setItem('studentName', name);
-
-            // Visual Feedback on Button
-            const btn = document.querySelector('.launch-btn');
-            btn.innerText = "Launching...";
-            btn.disabled = true;
-            btn.style.opacity = "0.7";
-
-            // Redirect to Home
-            setTimeout(() => {
-                window.location.href = "index.html";
-            }, 1200);
-        };
-    }
-});
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // Stop the instant jump
-
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-// 1. DATA FIRST: Put the translations at the VERY TOP
-const i18n = {
-    en: {
-        withus: "with us you make your wish come true",
-        edutitle:"EduStream",
-        dir: "ltr",
-        nav_home: "Home",
-        join: "Join",
-        nav_courses: "Courses",
-        nav_get_started: "Get Started",
-        hero_title: "Find Your Passion and Progress",
-        hero_para: "With us, you make your wishes come true.",
-        setup_title: "Create Your Profile",
-        expcourses: "Explore Courses",
-        create_profile: "Create Your Profile",
-        welcomepr: "Welcome to EduStream! Let's get your account ready.",
-        fullname: "Full Name",
-        username: "Username",
-        email: "Email Address",
-        password: "Password",
-        confirmpassword: "Confirm Password",  
-        note: "Note",
-        notecont: "You can customize your profile picture and bio once your account is launched.",
-        launch_account: "Launch My Account"
-    },
-    ar: {
-        withus: "معنا تجعل التمني واقعا",
-        edutitle:"إديو ستريم",
-        dir: "rtl",
-        join: "انظم",
-        nav_home: "الرئيسية",
-        nav_courses: "الدورات",
-        nav_get_started: "ابدأ الآن",
-        hero_title: "اكتشف شغفك وتقدمك المستمر",
-        hero_para: "معنا، يمكنك تحقيق كل ما تطمح إليه.",
-        setup_title: "أنشئ ملفك الشخصي",
-        expcourses: "اكتشف الدروس",
-        create_profile: "أنشئ ملفك الشخصي",
-        welcomepr: "مرحبًا بك في إديو ستريم! دعنا نجهز حسابك.",
-        fullname: "الاسم الكامل",
-        username: "اسم المستخدم",
-        email: "البريد الإلكتروني",
-        password: "كلمة المرور",
-        confirmpassword: "تأكيد كلمة المرور",
-        note: "ملاحظة",
-        notecont: "يمكنك تخصيص صورة ملفك الشخصي وسيرتك الذاتية بمجرد إطلاق حسابك.",
-        launch_account: "إطلاق حسابي",
-
-    }
-};
-
-// 2. CORE FUNCTIONS
-function setLanguage(lang) {
-    const translation = i18n[lang];
-    if (!translation) return;
-
-    // Change all text with data-i18n tags
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translation[key]) {
-            el.textContent = translation[key];
-        }
-    });
-
-    // Flip the page direction (LTR vs RTL)
-    document.documentElement.dir = translation.dir;
-    document.documentElement.lang = lang;
-
-    // Save choice
-    localStorage.setItem('userLang', lang);
-}
-
-// 3. MAIN INITIALIZATION (One single listener for everything)
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- LANGUAGE LOGIC ---
-    const langSwitcher = document.getElementById('langSwitcher');
-    const savedLang = localStorage.getItem('userLang') || 'en';
-    
-    if (langSwitcher) {
-        langSwitcher.value = savedLang;
-        setLanguage(savedLang);
-        langSwitcher.addEventListener('change', (e) => setLanguage(e.target.value));
-    }
-
-    // --- MODAL & LOGIN LOGIC ---
-    const modal = document.getElementById('loginModal');
-    const openBtn = document.getElementById('openLogin');
-    const closeBtn = document.querySelector('.close-btn');
-    const loginForm = document.getElementById('loginForm');
-    const heroContent = document.querySelector('.hero-content');
-    const userName = localStorage.getItem('studentName');
-
-    if (userName && heroContent) {
-        // MEMBER MODE
-        heroContent.innerHTML = `
-            <h1>Welcome back, ${userName}! 🎓</h1>
-            <p class="para">Pick up where you left off and keep growing.</p>
-            <div class="hero-btns">
-                <a href="#courses" class="btn-primary">My Courses</a>
-                <button id="logoutBtn" class="btn-secondary">Log Out</button>
-            </div>
-        `;
-        if (openBtn) openBtn.outerHTML = `<span class="user-name-nav">Hi, ${userName}</span>`;
+<body>
+    <nav class="navbar">
+        <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+        <div class="logo"><a href="#home"><img class="eduicon" src="img/3dicon.png"><h3 class="logo-text" data-i18n="edutitle">EduStream</h3></a> </div>
         
-        const logoutBtn = document.getElementById('logoutBtn');
-        if (logoutBtn) {
-            logoutBtn.onclick = () => {
-                localStorage.removeItem('studentName');
-                location.reload();
-            };
-        }
-    } else {
-        // GUEST MODE
-        if (openBtn && modal) {
-            openBtn.onclick = (e) => {
-                e.preventDefault();
-                modal.style.display = 'flex';
-            };
-        }
-    }
+        <ul class="nav-links">
+            <li><a data-i18n="nav_courses" href="#courses">Courses</a></li>
+            <li><a data-i18n="join" href="#join">Join</a></li>
+            <li><button id="openLogin" class="btn-primary" data-i18n="nav_get_started">Get Started</button></li>
+            <div class="lang-control">
+                <select id="langSwitcher">
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
+        </ul>
+    </nav>
 
-    // Modal Close logic
-    if (closeBtn) closeBtn.onclick = () => modal.style.display = 'none';
-    window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">Find Your Passion and Progress</h1>
+            <p class="para" data-i18n="withus">with us you make your wish come true</p>
+            <div class="hero-btns">
+                <a data-i18n="expcourses" href="#courses" class="btn-primary">Explore Courses</a>
+                <a data-i18n="viewpricing" href="#join" class="btn-secondary">View Pricing</a>
+            </div>
+        </div>
+    </header>
 
-    if (loginForm) {
-        loginForm.onsubmit = (e) => {
-            e.preventDefault();
-            window.location.href = "setup.html";
-        };
-    }
-});
+
+
+    <section id="courses" class="courses">
+
+        <h2 data-i18n="trending" class="section-title">Trending Courses</h2>
+
+        <div class="course-grid">
+
+            <div class="course-card">
+                <div class="course-img tech"><img src="https://images.unsplash.com/photo-1640110739689-09b7822d6982?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aGFuZGNyYWZ0fGVufDB8fDB8fHww" alt="" srcset=""></div>
+
+                <div class="course-info">
+
+                    <span class="badge">Handcraft</span>
+
+                    <h3>Make beautiful handcrafted works</h3>
+
+                    <p>create unique and beautiful handcrafted items with our expert guidance.</p>
+
+                    <button class="btn-outline">View Details</button>
+
+                </div>
+
+            </div>
+
+            <div class="course-card">
+
+                <div class="course-img design"><img src="https://images.unsplash.com/photo-1603714196939-6f6436c8d0c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" srcset=""></div>
+
+                <div class="course-info">
+
+                    <span class="badge">Scout</span>
+
+                    <h3>Scouting Level 2</h3>
+
+                    <p>How to become a real scout member and have the skills of the true leader.</p>
+
+                    <button class="btn-outline">View Details</button>
+
+                </div>
+
+            </div>
+
+            <div class="course-card">
+
+                <div class="course-img business"><div class="course-img design"><img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" srcset=""></div>
+</div>
+
+                <div class="course-info">
+
+                    <span class="badge">Speech</span>
+
+                    <h3>Admin Word</h3>
+
+                    <p>Strategy and growth for real scout members and how to deal with challenges.</p>
+
+                    <button class="btn-outline">View Details</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="join" class="join-section">
+
+        <div class="glass-container">
+
+            <div class="join-content">
+
+                 <h2 data-i18n="startfuturepar">Start Your Future Today</h2>
+
+                   <a data-i18n="join" href="setup.html" class="btn-primary">Join Now</a>
+
+            </div>
+
+
+
+            <div class="qr-container">
+
+                <div class="qr-card">
+
+                    <div class="qr-code">
+
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://edustream.com" alt="QR Code">
+
+                    </div>
+
+                    <p>Scan to get the App</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <footer>
+
+        <p>&copy; 2026 EduStream. Built with AI & Innovation.</p>
+
+    </footer>
+
+<div id="loginModal" class="modal-overlay">
+
+    <div class="modal-content glass">
+
+        <span class="close-btn">&times;</span>
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+
+                <img src="https://ui-avatars.com/api/?name=User&background=2563eb&color=fff" alt="Profile">
+
+            </div>
+
+            <h2>Welcome Back</h2>
+
+            <p>Login to your student account</p>
+
+        </div>
+
+       
+
+        <form id="loginForm">
+
+            <div class="input-group">
+
+                <label>Email Address</label>
+
+                <input type="email" placeholder="name@company.com" required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <input type="password" placeholder="••••••••" required>
+
+            </div>
+
+            <button type="submit" class="btn-primary full-width">Sign In</button>
+
+            <div class="modal-footer">
+
+                <a href="#">Forgot password?</a>
+
+                <span>Don't have an account? <a href="#join">Join Now</a></span>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html> 
