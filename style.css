@@ -1,0 +1,647 @@
+:root {
+    --primary: #2563eb;
+    --secondary: #6366f1;
+    --dark: #0f172a;
+    --light-glass: rgba(255, 255, 255, 0.1);
+    --border-glass: rgba(255, 255, 255, 0.2);
+}
+/* this is a comment */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: var(--dark);
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 0.5rem 5%;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(45deg, #ffffff, #33006db2);
+    box-shadow: 0 2px 10px rgba(214, 93, 93, 0.05);
+    position: fixed;
+    z-index: 1000; 
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(12px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.664);
+}
+.setnavbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 5%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(45deg, #004675, #33006db2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: absolute;
+    z-index: 100; 
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(12px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.664);
+    
+}
+.setnavbar .eduicon{
+    height: 3.5rem;
+    width: 3.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.664);
+}
+.setnavbar .logo{
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    color: rgb(255, 255, 255); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.664);
+
+}
+.courses { 
+    padding: 5rem 8%;
+    background: linear-gradient(45deg, #ff7b00, #c300ff);
+    scroll-margin-top: 80px; 
+}
+.para{
+    margin: 20px;
+}
+.logo{
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    color: rgb(255, 255, 255);
+}
+.logo-text{
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* This prevents the "jump" from landing under your sticky navbar */
+section {
+    scroll-margin-top: 80px; /* Adjust this to the height of your navbar */
+
+}
+.eduicon{
+    height: 3.5rem;
+    width: 3.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.664);
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    height: 105vh;
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=2071');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+
+}
+
+.hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.664);
+}
+
+/* Course Grid */
+.courses { padding: 5rem 8%;
+    background: linear-gradient(45deg, #ff7b00, #c300ff);
+ }
+.section-title {
+     text-align: center;
+      margin-bottom: 3rem;
+       font-size: 2.2rem;
+       color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.664);
+    }
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    
+}
+
+.course-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.course-card:hover { transform: translateY(-10px); }
+.course-img { height: 180px; background: #e2e8f0; }
+
+.hero, .courses, .join-section {
+    padding: 5rem 5%; /* Reduced from 8% to give more room on mobile */
+}
+
+.course-info { padding: 1.5rem; }
+.badge { color: var(--primary); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+
+/* Buttons */
+.btn-primary { background: var(--primary); color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.btn-secondary { background: white; color: var(--dark); padding: 0.8rem 1.8rem; border-radius: 8px; text-decoration: none; margin-left: 1rem; }
+.btn-outline { border: 2px solid var(--primary); background: transparent; color: var(--primary); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; margin-top: 1rem; width: 100%; }
+
+/* JOIN SECTION - GLASSMORPHISM */
+.join-section {
+    padding: 6rem 8%;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+.glass-container {
+    background: var(--light-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 30px;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.join-content { flex: 2; color: white; }
+.join-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+
+.join-form { display: flex; gap: 1rem; margin-top: 2rem; }
+.join-form input {
+    flex: 1;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    color: white;
+}
+
+/* QR Code */
+.qr-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+    width: 200px;
+}
+
+.qr-code img { width: 150px; border-radius: 10px; }
+.qr-card p { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; font-weight: 600; }
+
+footer { text-align: center; padding: 2rem; background: #0f172a; color: #94a3b8; font-size: 0.9rem; }
+/* Modal Overlay */
+.modal-overlay {
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Glass Modal Box */
+.modal-content {
+    padding: 2.5rem;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: modalFadeIn 0.3s ease-out;
+    background: var(--light-glass);
+    backdrop-filter: blur(15px);
+     -webkit-backdrop-filter: blur(15px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.233);
+}
+
+@keyframes modalFadeIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border: 4px solid rgb(248, 247, 236);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: rgb(255, 255, 255);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #3faeee;
+    border-radius: 8px;
+    outline: none;
+}
+
+.full-width { width: 100%; margin-top: 1rem; }
+
+.modal-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.modal-footer a { color: rgb(119, 155, 255); text-decoration: none; font-weight: 600; }
+.welcome-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+}
+
+.welcome-card {
+    text-align: center;
+    color: white;
+    max-width: 500px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.welcome-icon {
+    width: 80px;
+    margin: 2rem 0;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+/* Setup Page Specifics */
+.setup-body {
+    background: linear-gradient(45deg, #30006e, #1e293b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.setup-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 3rem;
+    border-radius: 28px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(15px); /* Support for Safari */
+    color: rgb(255, 255, 255);
+    box-shadow: 8px 8px 32px 0 rgba(0, 0, 0, 0.185);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.836);
+
+}
+
+.avatar-preview {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 1, 1, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px dashed rgba(255,255,255,0.3);
+}
+
+.avatar-preview img {
+    width: 60%; /* Icon size */
+    filter: invert(1); /* Makes black icon white */
+}
+
+
+.password-strength {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 8px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-container {
+    width: 100%;
+    height: 8px;              /* Crucial: Must have a height */
+    background: rgba(255, 255, 255, 0.1); /* This makes the slot visible */
+    margin-top: 10px;
+    border-radius: 4px;
+    overflow: hidden;         /* Keeps the inner bar inside the rounded corners */
+    display: block !important; /* Forces it to show up */
+}
+
+#strengthBar {
+    height: 100%;
+    width: 0%;                /* Starts at 0 */
+    background: #ef4444;      /* Initial color */
+    transition: width 0.3s ease-in-out;
+}
+.launch-btn {
+    width: 100%;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    padding: 1rem;
+}
+                                                    /* Logo Area in Setup */
+.setup-logo-area {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+.setup-logo-circle{
+    position:fixed;
+    width: 500px;
+    height: 500px;
+    z-index: -10;
+}
+.setup-logo-img{
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 15px rgba(114, 175, 245, 0.795));
+}
+
+.setup-footer-note {
+    margin-top: 1.5rem;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Adjusting input row for better balance on wider screens */
+.input-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+@media (max-width: 768px) {
+    .glass-container {
+        flex-direction: column; /* Stack "Join Now" text above the QR code */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .qr-card {
+        margin: 0 auto; /* Center the QR code */
+    }
+}
+
+@media (max-width: 600px) {
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%; /* Take up most of the screen width */
+        padding: 1.5rem;
+    }
+    
+    .input-row {
+        flex-direction: column; /* If you have side-by-side inputs, stack them */
+    }
+}
+/* Ensure the Navbar stays horizontal even on mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row !important; /* Forces side-by-side instead of column */
+        justify-content: flex-start;  /* Aligns items to the left */
+        gap: 15px;                    /* Space between ham and logo */
+        padding: 0.5rem 1rem;
+    }
+
+    /* Hide the "EduStream" text on mobile */
+    .logo-text.desktop-only {
+        display: none;
+    }
+
+    /* Ensure the hamburger is visible and looks right */
+    .menu-toggle {
+        display: flex !important;
+        order: -1; /* Extra insurance to keep it on the far left */
+    }
+
+    .bar {
+        background-color: #0f172a; /* Dark color to see it on your white nav */
+    }
+
+    /* Slide-out menu fix */
+    .nav-links {
+        position: fixed;
+        left: -100%; /* Hidden off-screen to the left */
+        top: 72px;   /* Adjust to your navbar height */
+        width: 250px;
+        height: 100vh;
+        background: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        transition: 0.4s ease;
+        display: flex; /* Always flex, but moved off-screen */
+    }
+
+    .nav-links.active {
+        left: 0; /* Slide in when active */
+    }
+}
+/* Use a clean Arabic font if language is AR */
+html[lang="ar"] body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fix margins that should flip */
+[dir="rtl"] .btn-secondary {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+[dir="rtl"] .nav-links {
+    padding-right: 0;
+    padding-left: 2rem;
+}
+/* Glass Lang Switcher Container */
+.lang-control {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#langSwitcher {
+    appearance: none ; /* Removes default browser arrow */
+    -webkit-appearance: none;
+    background: rgba(247, 241, 241, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: rgb(0, 0, 0);
+    padding: 8px 35px 8px 15px; /* Extra padding on right for custom arrow */
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover & Focus Effects */
+#langSwitcher:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Custom Arrow (The Glass Look needs a custom icon) */
+.lang-control::after {
+    content: '▼';
+    font-size: 10px;
+    color: rgba(255, 246, 246, 0.6);
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Styling the Dropdown Options (Limited Support in Browsers) */
+#langSwitcher option {
+    background: #1e293b; /* Dark background so text is readable */
+    color: white;
+    padding: 10px;
+}
+
+/* RTL Adjustment for the Arrow */
+[dir="rtl"] .lang-control::after {
+    right: auto;
+    left: 15px;
+}
+
+[dir="rtl"] #langSwitcher {
+    padding: 8px 15px 8px 35px;
+}
+/* 1. Ensure the container has dimensions */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;  /* Give it a specific width */
+    height: 40px; /* Give it a specific height */
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1100;
+}
+
+/* 2. Make the bars a visible color (Darker for your white/purple nav) */
+.bar {
+    display: block; /* Ensure they are rendered as blocks */
+    width: 30px;
+    height: 3px;
+    background-color: #0f172a; /* Use your --dark color so it shows on the white nav */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* 3. The Media Query - IMPORTANT */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important; /* Forces it to show */
+    }
+
+    .nav-links {
+        display: none; /* Hide the standard links */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show them when toggled */
+        /* ... your other mobile styles from before ... */
+    }
+}
+.course-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
